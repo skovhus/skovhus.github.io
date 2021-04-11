@@ -7,7 +7,6 @@ import { PageWidthContainer } from './PageContainer'
 type Props = {
   children: React.ReactNode
   showHeaderIntro?: boolean
-  location: Location
 }
 
 export default function Layout({ children, showHeaderIntro = false }: Props) {

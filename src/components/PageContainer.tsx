@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { rhythm } from '../utils/typography'
+import { rhythm } from '../libs/typography'
 
 export const PageWidthContainer = styled.div`
   margin-left: auto;

@@ -1,23 +1,24 @@
 import React from 'react'
-import { OutboundLink } from 'gatsby-plugin-google-analytics'
 
 const ExternalLink = ({
   children,
   noUnderline = false,
-  linkTo,
+  href,
 }: {
   children: JSX.Element | string
   noUnderline?: boolean
-  linkTo: string
+  href: string
 }) => (
-  <OutboundLink
-    href={linkTo}
-    style={noUnderline ? { boxShadow: `none` } : {}}
+  <a
     target="_blank"
     rel="nofollow noopener noreferrer"
+    href={href}
+    style={{
+      boxShadow: noUnderline ? 'none' : 'default',
+    }}
   >
     {children}
-  </OutboundLink>
+  </a>
 )
 
 export default ExternalLink
