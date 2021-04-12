@@ -1,14 +1,14 @@
 import React from 'react'
-import { Link, graphql, useStaticQuery } from 'gatsby'
+import Link from 'next/link'
 import styled from '@emotion/styled'
 
 import Discography from '../components/Discography'
 import ExternalLink from '../components/ExternalLink'
 import Layout from '../components/Layout'
 import SEO from '../components/Seo'
-import { rhythm } from '../utils/typography'
 import { TALKS } from '../content/talks'
-import { IndexQuery } from '../__generated__/gatsby-types'
+import { rhythm } from '../libs/typography'
+import { getAllPosts, Post } from '../libs/blog'
 
 const Heading = styled.h1`
   font-size: 2rem;
@@ -35,12 +35,12 @@ const LinkEntity = ({
   title: string
 }) => {
   const linkElement = linkTo.startsWith('http') ? (
-    <ExternalLink linkTo={linkTo} noUnderline>
+    <ExternalLink href={linkTo} noUnderline>
       {title}
     </ExternalLink>
   ) : (
-    <Link style={{ boxShadow: `none` }} to={linkTo}>
-      {title}
+    <Link href={linkTo}>
+      <a style={{ boxShadow: `none` }}>{title}</a>
     </Link>
   )
 
@@ -64,41 +64,22 @@ const LinkEntity = ({
   )
 }
 
-type Props = {
-  location: Location
+export async function getStaticProps() {
+  const posts = getAllPosts()
+
+  return {
+    props: {
+      posts,
+    },
+  }
 }
 
-export default function Index({ location }: Props) {
-  const data = useStaticQuery<IndexQuery>(
-    graphql`
-      query Index {
-        allMarkdownRemark(
-          filter: { fields: { slug: { regex: "/blog/" } } }
-          sort: { fields: [frontmatter___date], order: DESC }
-        ) {
-          edges {
-            node {
-              fields {
-                slug
-              }
-              timeToRead
-              frontmatter {
-                date(formatString: "MMMM DD, YYYY")
-                title
-                description
-              }
-            }
-          }
-        }
-      }
-    `
-  )
+type Props = { posts: Post[] }
 
-  const posts = data.allMarkdownRemark.edges
-
+export default function Index({ posts }: Props) {
   return (
-    <Layout location={location} showHeaderIntro>
-      <SEO location={location} />
+    <Layout showHeaderIntro>
+      <SEO />
       <p style={{ marginTop: '2rem' }}>
         I have been messing around with computers and music for as long as I remember.
         Building meaningful products together with talented people is my passion. I love
@@ -113,28 +94,16 @@ export default function Index({ location }: Props) {
       <NegativeHeadingSpacingHack />
       <Heading id="posts">I occasionally blog</Heading>
       <NegativeHeadingSpacingHack />
-      {posts.map(({ node }: any) => {
-        if (!node.frontmatter || !node.fields) {
-          throw new Error('missing frontmatter or fields on post')
-        }
-
-        const { description, title } = node.frontmatter
-        const { slug } = node.fields
-
-        if (!description || !title) {
-          throw new Error('missing description or title on post')
-        }
-
-        if (!slug) {
-          throw new Error('missing slug on post')
-        }
+      {posts.map(post => {
+        const { frontmatter, slug, timeToRead } = post
+        const { date, description, title } = frontmatter
 
         return (
           <LinkEntity
             description={description}
             key={slug}
-            linkTo={slug}
-            subTitle={`${node.frontmatter.date} • ${node.timeToRead} minute read`}
+            linkTo={`/blog/${slug}`}
+            subTitle={`${date} • ${timeToRead} minute read`}
             title={title}
           />
         )
@@ -154,26 +123,26 @@ export default function Index({ location }: Props) {
       <p>Highlights:</p>
       <ul>
         <li>
-          <ExternalLink linkTo="https://github.com/skovhus/jest-codemods">
+          <ExternalLink href="https://github.com/skovhus/jest-codemods">
             skovhus/jest-codemods
           </ExternalLink>
         </li>
         <li>
-          <ExternalLink linkTo="https://github.com/skovhus/css-modules-flow-types">
+          <ExternalLink href="https://github.com/skovhus/css-modules-flow-types">
             skovhus/css-modules-flow-types
           </ExternalLink>
         </li>
         <li>
-          <ExternalLink linkTo="https://hatch.sh/">hatch.sh</ExternalLink>
+          <ExternalLink href="https://hatch.sh/">hatch.sh</ExternalLink>
         </li>
         <li>
-          <ExternalLink linkTo="https://github.com/mads-hartmann/bash-language-server">
+          <ExternalLink href="https://github.com/mads-hartmann/bash-language-server">
             bash-language-server
           </ExternalLink>
           {` `}+ bash extensions for code editors
         </li>
         <li>
-          <ExternalLink linkTo="https://github.com/facebook/jest">jest</ExternalLink>
+          <ExternalLink href="https://github.com/facebook/jest">jest</ExternalLink>
         </li>
       </ul>
 

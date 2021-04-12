@@ -1,10 +1,10 @@
 import React from 'react'
-import { Link } from 'gatsby'
+import Link from 'next/link'
 import styled from '@emotion/styled'
 
 import ProfileImage from './ProfileImage'
 import { Menu } from './Menu'
-import { useWindowSize } from '../utils/useWindowSize'
+import { useWindowSize } from '../libs/useWindowSize'
 import { PageWidthContainer } from './PageContainer'
 
 const StyledHeader = styled.header`
@@ -44,23 +44,24 @@ const BackArrow = styled.div`
 
 const HeaderLink = ({
   children,
-  to,
+  href,
   style = {},
 }: {
   children: React.ReactNode
-  to: string
+  href: string
   style?: React.CSSProperties
 }) => (
-  <Link
-    style={{
-      boxShadow: 'none',
-      textDecoration: 'none',
-      color: 'inherit',
-      ...style,
-    }}
-    to={to}
-  >
-    {children}
+  <Link href={href}>
+    <a
+      style={{
+        boxShadow: 'none',
+        textDecoration: 'none',
+        color: 'inherit',
+        ...style,
+      }}
+    >
+      {children}
+    </a>
   </Link>
 )
 
@@ -93,7 +94,7 @@ export default function Header({ showIntro }: Props) {
       <PageWidthContainer>
         <StyledNav>
           <HeaderLink
-            to={'/'}
+            href={'/'}
             style={{
               display: 'flex',
               alignItems: 'center',

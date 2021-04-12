@@ -23,5 +23,8 @@
     "src",
     ".*.js",
     "*.js"
+  ],
+  "exclude": [
+    "node_modules"
   ]
 }

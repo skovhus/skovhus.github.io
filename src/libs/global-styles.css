@@ -1,3 +1,34 @@
+:root {
+  --color-accent: hsl(240, 80%, 35%);
+  --background-context-color: rgb(21, 32, 43);
+  --background-context-image: var(--background-context-color)
+    url("../../public/header-unsplash-ryan_hutton_.jpg") repeat;
+  --background-content: white;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+}
+
+html,
+body,
+#___gatsby,
+#gatsby-focus-wrapper {
+  height: 100%;
+}
+
+body {
+  margin: 0px;
+  background: var(--background-context-color);
+}
+
+@media print {
+  body,
+  html {
+    font-size: 90%;
+  }
+}
+
 /**
  * Copy paste from Remy Bach, Sarah Drasner and overreacted.io
  */
@@ -129,7 +160,10 @@ pre[data-line] {
   position: relative;
 }
 
-.gatsby-highlight-code-line {
+/* FIXME: styling is a bit off */
+/* FIXME: inline styles are completely off */
+
+.remark-highlight-code-line {
   background-color: hsla(207, 95%, 15%, 1);
   display: block;
   margin-right: -1.3125rem;
@@ -139,7 +173,7 @@ pre[data-line] {
   border-left: 0.25em solid #f99;
 }
 
-.gatsby-highlight {
+.remark-highlight {
   margin-bottom: 1.75rem;
   margin-left: -1.3125rem;
   margin-right: -1.3125rem;
@@ -150,7 +184,7 @@ pre[data-line] {
 }
 
 @media (max-width: 672px) {
-  .gatsby-highlight {
+  .remark-highlight {
     border-radius: 0;
   }
 }

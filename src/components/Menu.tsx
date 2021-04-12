@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import styled from '@emotion/styled'
+import NextLink from 'next/link'
 
 import { BurgerIcon } from './BurgerIcon'
-import { Link as GatsbyLink } from 'gatsby'
 
 const MenuContainer = styled.div`
   user-select: none;
@@ -25,10 +25,11 @@ const MenuContent = styled.div`
   justify-content: space-evenly;
 `
 
-const StyledGatsbyLink = styled(GatsbyLink)`
+const StyledLink = styled.a`
   color: white;
   padding: 20px;
   box-shadow: none;
+  cursor: pointer;
 `
 
 export function Menu() {
@@ -38,14 +39,10 @@ export function Menu() {
     document.body.style.overflowY = isOpen ? 'hidden' : ''
   }, [isOpen])
 
-  const Link = ({ to, label }: { to: string; label: string }) => (
-    <StyledGatsbyLink
-      aria-label={`View ${label.toLowerCase()} page`}
-      to={to}
-      onClick={() => setIsOpen(false)}
-    >
-      {label}
-    </StyledGatsbyLink>
+  const Link = ({ href, label }: { href: string; label: string }) => (
+    <NextLink aria-label={`View ${label.toLowerCase()} page`} href={href}>
+      <StyledLink onClick={() => setIsOpen(false)}>{label}</StyledLink>
+    </NextLink>
   )
 
   return (
@@ -54,11 +51,11 @@ export function Menu() {
       {isOpen && (
         <MenuContainer>
           <MenuContent>
-            <Link to="#posts" label="Blog" />
-            <Link to="#talks" label="Talks" />
-            <Link to="#oss" label="Open source" />
-            <Link to="#music" label="Music" />
-            <Link to="/cv" label="CV" />
+            <Link href="/#posts" label="Blog" />
+            <Link href="/#talks" label="Talks" />
+            <Link href="/#oss" label="Open source" />
+            <Link href="/#music" label="Music" />
+            <Link href="/cv" label="CV" />
           </MenuContent>
         </MenuContainer>
       )}

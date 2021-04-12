@@ -46,7 +46,7 @@ export default function Footer() {
       <div>
         {/* Icons from https://simpleicons.org/ */}
 
-        <ExternalLink linkTo="https://github.com/skovhus" noUnderline>
+        <ExternalLink href="https://github.com/skovhus" noUnderline>
           <SvgIcon
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 16 16"
@@ -59,7 +59,7 @@ export default function Footer() {
           </SvgIcon>
         </ExternalLink>
 
-        <ExternalLink linkTo="https://twitter.com/kenneth_skovhus" noUnderline>
+        <ExternalLink href="https://twitter.com/kenneth_skovhus" noUnderline>
           <SvgIcon
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 16 16"
@@ -75,7 +75,7 @@ export default function Footer() {
           </SvgIcon>
         </ExternalLink>
 
-        <ExternalLink linkTo="https://medium.com/@skovhus" noUnderline>
+        <ExternalLink href="https://medium.com/@skovhus" noUnderline>
           <SvgIcon
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 16 16"
@@ -88,13 +88,13 @@ export default function Footer() {
           </SvgIcon>
         </ExternalLink>
 
-        <ExternalLink linkTo="spotify:user:113185320" noUnderline>
+        <ExternalLink href="spotify:user:113185320" noUnderline>
           <SvgIcon role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z" />
           </SvgIcon>
         </ExternalLink>
 
-        <ExternalLink linkTo="https://www.linkedin.com/in/skovhus" noUnderline>
+        <ExternalLink href="https://www.linkedin.com/in/skovhus" noUnderline>
           <SvgIcon
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 16 16"
@@ -110,7 +110,7 @@ export default function Footer() {
           </SvgIcon>
         </ExternalLink>
 
-        <ExternalLink linkTo="mailto:kenneth.skovhus@gmail.com" noUnderline>
+        <ExternalLink href="mailto:kenneth.skovhus@gmail.com" noUnderline>
           <SvgIcon role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path d="M24 4.5v15c0 .85-.65 1.5-1.5 1.5H21V7.387l-9 6.463-9-6.463V21H1.5C.649 21 0 20.35 0 19.5v-15c0-.425.162-.8.431-1.068C.7 3.16 1.076 3 1.5 3H2l10 7.25L22 3h.5c.425 0 .8.162 1.069.432.27.268.431.643.431 1.068z" />
           </SvgIcon>
